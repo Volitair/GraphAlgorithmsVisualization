@@ -40,4 +40,4 @@ const  radiusVertex = 42;
 const  kLoop = 1.1;
 const  radiusLoop = 20;
 const  dAngle = Math.PI / 18;
-let INF = 1000000000000;
+const INF = 1000000000000;

@@ -6,9 +6,9 @@ const centerCanvasCalculate = (width, height) => {
   return { x, y };
 };
 
-const transposeMatrix = (matrix) => {
-  const m = matrix.length, 
-    n = matrix[0].length, 
+const transposeMatrix = matrix => {
+  const m = matrix.length,
+    n = matrix[0].length,
     matrixT = [];
   for (let i = 0; i < n; i++) {
     matrixT[i] = [];
@@ -29,9 +29,9 @@ const sumMatrix = (A, B) => {
     }
   }
   return C;
-}
+};
 
-const booleanTransformation = (matrix) => {
+const booleanTransformation = matrix => {
   const
     n = matrix.length,
     C = [];
@@ -45,9 +45,9 @@ const booleanTransformation = (matrix) => {
       }
   }
   return C;
-}
+};
 
-const diagonalZero = (matrix) => {
+const diagonalZero = matrix => {
   const
     n = matrix.length,
     C = [];
@@ -61,5 +61,22 @@ const diagonalZero = (matrix) => {
       }
   }
   return C;
-}
+};
+
+const calculateСoordsParallEdge = (start, end, dAngle) => {
+  const endX = end.x;
+  const endY = end.y;
+  const startX = start.x;
+  const startY = start.y;
+  const dx = endX - startX;
+  const dy = endY - startY;
+  const angle = Math.atan2(dy, dx);
+  const x1 = startX + start.radius * Math.cos(angle + dAngle);
+  const y1 = startY + start.radius * Math.sin(angle + dAngle);
+  const x2 = endX - end.radius * Math.cos(angle - dAngle);
+  const y2 = endY - end.radius * Math.sin(angle - dAngle);
+  const startPoint = { x: x1, y: y1 };
+  const endPoint = { x: x2, y: y2 };
+  return [startPoint, endPoint];
+};
 
