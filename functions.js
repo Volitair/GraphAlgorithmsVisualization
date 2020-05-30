@@ -63,6 +63,12 @@ const diagonalZero = matrix => {
   return C;
 };
 
+const centerCalculate = (width, height) => {
+  const x = width / 2;
+  const y = height / 2;
+  return { x, y };
+};
+
 const calculateСoordsParallEdge = (start, end, dAngle) => {
   const endX = end.x;
   const endY = end.y;
@@ -80,3 +86,23 @@ const calculateСoordsParallEdge = (start, end, dAngle) => {
   return [startPoint, endPoint];
 };
 
+const coordinateVertex = (n, center, multiplier) => {
+  const xCenter = center.x;
+  const yCenter = center.y;
+  const width = widthGraph;
+  const height = heightGraph;
+  const dAngle = 2 * Math.PI / n;
+  const radius = multiplier * Math.min(width, height) / 2;
+  const vertexCoords = new Map();
+  const angle = -1 * dAngle;
+  
+  for (let i = 1; i <= n; i++) {
+    const dx = radius * Math.sin(angle + dAngle * i);
+    const dy = radius * Math.cos(angle + dAngle * i);
+    const x = xCenter + Math.floor(dx);
+    const y = yCenter - Math.floor(dy);
+
+    vertexCoords.set(i, { i, x, y });
+  }
+  return vertexCoords;
+};

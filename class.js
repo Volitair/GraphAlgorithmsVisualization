@@ -189,3 +189,58 @@ class ParallelDirectedEdge extends DirectedEdge {
     this.arrowHead.draw(ctx, strokeColor);
   }
 }
+
+class Graph {
+  constructor(matrix) {
+    this.matrix = matrix;
+    this.vertices = new Map();
+    this.loops = new Map();
+    this.edges = new Map();
+  }
+
+  createVertexObj() {
+    const n = this.matrix.length;
+    const coords = coordinateVertex(n, center, multiplier);
+
+    for (const obj of coords) {
+      const vertex = new Vertex(obj[1], radiusVertex);
+      this.vertices.set(vertex.i, vertex);
+    }
+  }
+}
+
+class DirectedGraph extends Graph {
+  constructor(matrix) {
+    super(matrix);
+  }
+
+  createGraphElements() {
+    const matrix = this.matrix;
+    const n = matrix.length;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        if (matrix[i][j] === 1) {
+          if (i === j) {
+            const v = this.vertices.get(i + 1);
+            const loop = new Loop(v);
+            this.loops.set(v.i, loop);
+          } else if (matrix[i][j] === matrix[j][i]) {
+            const elementI = i + 1;
+            const elementJ = j + 1;
+            const vi = this.vertices.get(elementI);
+            const vj = this.vertices.get(elementJ);
+            const edge = new ParallelDirectedEdge(vi, vj, dAngle);
+            this.edges.set(`${i + 1} - ${j + 1}`, edge);
+          } else {
+            const elementI = i + 1;
+            const elementJ = j + 1;
+            const vi = this.vertices.get(elementI);
+            const vj = this.vertices.get(elementJ);
+            const edge = new DirectedEdge(vi, vj);
+            this.edges.set(`${i + 1} - ${j + 1}`, edge);
+          }
+        }
+      }
+    }  
+  }
+}
