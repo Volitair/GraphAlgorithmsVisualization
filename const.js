@@ -41,4 +41,4 @@ const kLoop = 1.1;
 const radiusLoop = 20;
 const dAngle = Math.PI / 18;
 const INF = 1000000000000;
-const delayHalt = 100;
+const delayHalt = 1000;
