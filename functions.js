@@ -136,18 +136,18 @@ const drawDirGraph = (graph, ctx) => {
   const loops = graph.loops;
 
   for (const item of loops) {
-    const loop = item.pop();
+    const loop = item[1];
     loop.draw(ctx);
   }
 
   for (const item of edges) {
-    const edge = item.pop();
+    const edge = item[1];
     edge.draw(ctx);
     edge.arrowHead.draw(ctx);
   }
 
   for (const item of vertices) {
-    const vertex = item.pop();
+    const vertex = item[1];
     vertex.draw(ctx);
   }
 };
@@ -158,18 +158,121 @@ const drawNotDirGraph = (graph, ctx) => {
   const loops = graph.loops;
 
   for (const item of loops) {
-    const loop = item.pop();
+    const loop = item[1];
     loop.draw(ctx);
   }
 
   for (const item of edges) {
-    const edge = item.pop();
+    const edge = item[1];
     edge.draw(ctx);
   }
 
   for (const item of vertices) {
-    const vertex = item.pop();
+    const vertex = item[1];
     vertex.draw(ctx);
   }
 };
 
+const drawCurrentValuePathLength = (graph, ctx, lengths, visited, current) => {
+  const vertices = graph.vertices;
+  for (let i = 0; i < visited.length; i++) {
+    const vertex = vertices.get(i + 1);
+    const currentLength = lengths[i];
+    let lengthText = currentLength;
+    if (currentLength === INF) {
+      lengthText = '∞';
+    }
+    vertex.setCustomText(`${i + 1} (${lengthText})`);
+
+    if (visited[i] === true) {
+      if (i === current) {
+        vertex.draw(ctx, true, 'yellow');
+      } else {
+        vertex.draw(ctx, true, 'blue');
+      }
+    } else {
+      vertex.draw(ctx, true, 'red');
+    }
+  }
+};
+
+function halt(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const calculatePath = obj => {
+  if (obj.parent === null) {
+    const res = [(obj.id)];
+    return res;
+  }
+  const res = calculatePath(obj.parent);
+  res.push(obj.id);
+  return res;
+};
+
+const logPathDijkstra = p => {
+  if (p.length === 0) return;
+  const arrPath = calculatePath(p);
+  let result = '';
+  for (let i = 0; i < arrPath.length; i++) {
+    if (i === arrPath.length - 1) {
+      result += `${arrPath[i] + 1} length: ${p.length}`;
+      continue;
+    }
+    result += `${arrPath[i] + 1}->`;
+  }
+  console.log(result);
+};
+const logAllPathDijkstra = arrPath => {
+  for (const path of arrPath) {
+    logPathDijkstra(path);
+  }
+};
+
+async function dijkstra(graph, ctx, start = 1) {
+  const weights = graph.weights;
+  const n = weights.length;
+  const d = [];
+  const p = [];
+  const been = [];
+  let current = undefined;
+  d[start - 1] = 0;
+
+  for (let i = 0; i < n; i++) {
+    been[i] = false;
+    if (i === start - 1) {
+      p[i] = { id: i, parent: null, length: 0 };
+      continue;
+    }
+    p[i] = { id: i, parent: null, length: INF };
+    d[i] = INF;
+  }
+
+  for (let i = 0; i < n; i++) {
+    let min = INF;
+
+    for (let j = 0; j < n; j++) {
+      if (!been[j] && d[j] < min) {
+        min = d[j];
+        current = j;
+      }
+    }
+
+    been[current] = true;
+
+    for (let i = 0; i < n; i++) {
+      if (!been[i] && weights[current][i] !== 0) {
+        if (d[i] > d[current] + weights[current][i]) {
+          d[i] = d[current] + weights[current][i];
+          p[i].length = d[current] + weights[current][i];
+          p[i].parent = p[current];
+        }
+      }
+    }
+    drawCurrentValuePathLength(graph, ctx, d, been, current);
+    await halt(delayHalt);
+  }
+  drawCurrentValuePathLength(graph, ctx, d, been);
+  butDijkstra.disabled = false;
+  logAllPathDijkstra(p);
+}

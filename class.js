@@ -23,7 +23,7 @@ class Vertex {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     if (customText) {
-      ctx.fillText(this.text, this.x, this.y);
+      ctx.fillText(this.customText, this.x, this.y);
     } else {
       ctx.fillText(this.i, this.x, this.y);
     }
@@ -67,6 +67,26 @@ class Edge {
     ctx.lineTo(x2, y2);
     ctx.stroke();
     ctx.lineWidth = 1;
+  }
+
+  set weight(weights) {
+    this.weightEdge = weights[this.startI - 1][this.endI - 1];
+    const rand = Math.random();
+    let k;
+    if (rand < 0.25 || rand > 0.75) {
+      k = 0.4;
+    } else {
+      k = rand;
+    }
+    this.weightX = ((this.endX - this.startX) * k) + this.startX;
+    this.weightY = ((this.endY - this.startY) * k) + this.startY;
+  }
+
+  drawWeight(ctx, fillStyle = 'black') {
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = fillStyle;
+    ctx.fillText(this.weightEdge, this.weightX, this.weightY);
   }
 }
 
@@ -136,7 +156,7 @@ class ArrowHead {
 
 class DirectedEdge extends Edge {
   constructor(vertexStart, vertexEnd) {
-    super(vertexStart, vertexEnd)
+    super(vertexStart, vertexEnd);
   }
 
   createArrowHead() {
@@ -258,6 +278,14 @@ class NotDirectedGraph extends Graph {
     super(matrix);
   }
 
+  set setWeights(weightsMatrix) {
+    this.weights = weightsMatrix;
+    for (const item of this.edges) {
+      const edge = item.pop();
+      edge.weight = weightsMatrix;
+    }
+  }
+
   createGraphElements() {
     const matrix = this.matrix;
     const n = matrix.length;
@@ -278,6 +306,13 @@ class NotDirectedGraph extends Graph {
           }
         }
       }
+    }
+  }
+
+  drawAllWeights(ctx) {
+    for (const item of this.edges) {
+      const edge = item.pop();
+      edge.drawWeight(ctx);
     }
   }
 }

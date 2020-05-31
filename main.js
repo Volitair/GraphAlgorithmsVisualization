@@ -14,6 +14,13 @@ notDirGraph.createVertexObj();
 notDirGraph.createGraphElements();
 
 drawNotDirGraph(notDirGraph, ctxNotDir);
+drawNotDirGraph(notDirGraph, ctxDijkstra);
+
+notDirGraph.setWeights = weightsMatrix;
+notDirGraph.drawAllWeights(ctxWeights);
+notDirGraph.drawAllWeights(ctxWeights2);
+
+
 
 //console.log(dirGraph);
 //console.log(notDirGraph);

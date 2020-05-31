@@ -30,14 +30,15 @@ const weightsMatrix = [
   [0,   39,  92,  24, 0,  56, 97, 93, 26, 2,   0,  0]
 ];
 
-const  widthGraph = 900;
-const  heightGraph = 900;
-const  ID = 9320;
-const  n3 = ID.toString().split('')[2];
-const  n4 = ID.toString().split('')[3];
-const  multiplier = 0.8;
-const  radiusVertex = 42;
-const  kLoop = 1.1;
-const  radiusLoop = 20;
-const  dAngle = Math.PI / 18;
+const widthGraph = 900;
+const heightGraph = 900;
+const ID = 9320;
+const n3 = ID.toString().split('')[2];
+const n4 = ID.toString().split('')[3];
+const multiplier = 0.8;
+const radiusVertex = 42;
+const kLoop = 1.1;
+const radiusLoop = 20;
+const dAngle = Math.PI / 18;
 const INF = 1000000000000;
+const delayHalt = 100;
