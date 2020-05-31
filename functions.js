@@ -63,6 +63,18 @@ const diagonalZero = matrix => {
   return C;
 };
 
+const zeroMatrix = n => {
+  const matrix = [];
+  for (let i = 0; i < n; i++) {
+    matrix[i] = [];
+    for (let j = 0; j < n; j++) {
+      matrix[i][j] = 0;
+    }
+  }
+  return matrix;
+};
+
+
 const symmetryMatrix = matrix => {
   const matrixT = transposeMatrix(matrix);
   const sum = sumMatrix(matrix, matrixT);
@@ -276,3 +288,23 @@ async function dijkstra(graph, ctx, start = 1) {
   butDijkstra.disabled = false;
   logAllPathDijkstra(p);
 }
+
+async function visualizeKruskalAlgo(ctx, edges, delay) {
+  butKruskalAlgorithm.disabled = true;
+
+  let result = 'Minimum spanning tree consists of edges: ';
+
+  for (const edge of edges) {
+    edge.draw(ctx, 'red', 2);
+    result += `[${edge.startI}, ${edge.endI}] `;
+    await halt(delay);
+  }
+
+  console.log(result);
+  butKruskalAlgorithm.disabled = false;
+}
+
+const clearCanvas = canvas => {
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+};

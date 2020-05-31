@@ -316,3 +316,73 @@ class NotDirectedGraph extends Graph {
     }
   }
 }
+
+class Kruskal {
+  constructor(graph) {
+    this.graph = graph;
+    this.edges = graph.edges;
+  }
+
+  find(parent, i) {
+    if (parent[i] === i) return i;
+    return this.find(parent, parent[i]);
+  }
+
+  union(parent, rank, x, y) {
+    const xRoot = this.find(parent, x);
+    const yRoot = this.find(parent, y);
+
+    if (rank[xRoot] < rank[yRoot]) {
+      parent[xRoot] = yRoot;
+    } else if (rank[xRoot] > rank[yRoot]) {
+      parent[yRoot] = xRoot;
+    } else {
+      parent[yRoot] = xRoot;
+      rank[xRoot] += 1;
+    }
+  }
+
+  kruskalMST() {
+    const n = this.graph.matrix.length;
+    const result = [];
+    let currentStep = 0;
+    let currentEdge = 0;
+    this.skeletonMatrix = zeroMatrix(n);
+
+    const arrEdges = [];
+    for (const item of this.edges) {
+      arrEdges.push(item[1]);
+    }
+    arrEdges.sort((a, b) => a.weightEdge - b.weightEdge);
+    //console.log(arrEdges);
+
+    const parent = [];
+    const rank = [];
+
+    for (let i = 0; i < n; i++) {
+      parent.push(i);
+      rank.push(0);
+    }
+
+    while (currentStep < n - 1) {
+      const v1 = arrEdges[currentEdge].startI - 1;
+      const v2 = arrEdges[currentEdge].endI - 1;
+      //console.log(v1, v2);
+
+      const rootv1 = this.find(parent, v1);
+      const rootv2 = this.find(parent, v2);
+      //console.log(rootv1, rootv2);
+      if (rootv1 !== rootv2) {
+        currentStep++;
+        result.push(arrEdges[currentEdge]);
+        this.union(parent, rank, rootv1, rootv2);
+        this.skeletonMatrix[v1][v2] = 1;
+        this.skeletonMatrix[v2][v1] = 1;
+      }
+      currentEdge++;
+    }
+    //console.log(arrEdges);
+    return result;
+  }
+}
+
