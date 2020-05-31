@@ -11,3 +11,13 @@ const ctxWeights = canvasWeights.getContext('2d');
 ctxDir.font = '20px Times New Roman';
 ctxNotDir.font = '20px Times New Roman';
 ctxWeights.font = '22px Times New Roman';
+
+function dirNotDir() {
+  if (canvasDir.style.display === 'block') {
+    canvasNotDir.style.display = 'block';
+    canvasDir.style.display = 'none';
+  } else {
+    canvasNotDir.style.display = 'none';
+    canvasDir.style.display = 'block';
+  }
+}
