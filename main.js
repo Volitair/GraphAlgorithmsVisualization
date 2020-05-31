@@ -24,7 +24,3 @@ notDirGraph.drawAllWeights(ctxWeights2);
 
 const kruskal = new Kruskal(notDirGraph);
 const treeKruskal = kruskal.kruskalMST();
-console.log(treeKruskal);
-
-//console.log(dirGraph);
-//console.log(notDirGraph);

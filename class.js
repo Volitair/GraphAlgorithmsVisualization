@@ -354,7 +354,6 @@ class Kruskal {
       arrEdges.push(item[1]);
     }
     arrEdges.sort((a, b) => a.weightEdge - b.weightEdge);
-    //console.log(arrEdges);
 
     const parent = [];
     const rank = [];
@@ -367,11 +366,9 @@ class Kruskal {
     while (currentStep < n - 1) {
       const v1 = arrEdges[currentEdge].startI - 1;
       const v2 = arrEdges[currentEdge].endI - 1;
-      //console.log(v1, v2);
 
       const rootv1 = this.find(parent, v1);
       const rootv2 = this.find(parent, v2);
-      //console.log(rootv1, rootv2);
       if (rootv1 !== rootv2) {
         currentStep++;
         result.push(arrEdges[currentEdge]);
@@ -381,7 +378,6 @@ class Kruskal {
       }
       currentEdge++;
     }
-    //console.log(arrEdges);
     return result;
   }
 }
