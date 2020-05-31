@@ -63,6 +63,12 @@ const diagonalZero = matrix => {
   return C;
 };
 
+const symmetryMatrix = matrix => {
+  const matrixT = transposeMatrix(matrix);
+  const sum = sumMatrix(matrix, matrixT);
+  return booleanTransformation(sum);
+};
+
 const centerCalculate = (width, height) => {
   const x = width / 2;
   const y = height / 2;
@@ -95,7 +101,7 @@ const coordinateVertex = (n, center, multiplier) => {
   const radius = multiplier * Math.min(width, height) / 2;
   const vertexCoords = new Map();
   const angle = -1 * dAngle;
-  
+
   for (let i = 1; i <= n; i++) {
     const dx = radius * Math.sin(angle + dAngle * i);
     const dy = radius * Math.cos(angle + dAngle * i);
@@ -106,3 +112,47 @@ const coordinateVertex = (n, center, multiplier) => {
   }
   return vertexCoords;
 };
+
+const drawDirGraph = (graph, ctx) => {
+  const edges = graph.edges;
+  const vertices = graph.vertices;
+  const loops = graph.loops;
+
+  for (const item of loops) {
+    const loop = item.pop();
+    loop.draw(ctx);
+  }
+
+  for (const item of edges) {
+    const edge = item.pop();
+    edge.draw(ctx);
+    edge.arrowHead.draw(ctx);
+  }
+
+  for (const item of vertices) {
+    const vertex = item.pop();
+    vertex.draw(ctx);
+  }
+};
+
+const drawNotDirGraph = (graph, ctx) => {
+  const edges = graph.edges;
+  const vertices = graph.vertices;
+  const loops = graph.loops;
+
+  for (const item of loops) {
+    const loop = item.pop();
+    loop.draw(ctx);
+  }
+
+  for (const item of edges) {
+    const edge = item.pop();
+    edge.draw(ctx);
+  }
+
+  for (const item of vertices) {
+    const vertex = item.pop();
+    vertex.draw(ctx);
+  }
+};
+
