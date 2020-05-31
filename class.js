@@ -136,8 +136,14 @@ class ArrowHead {
 
 class DirectedEdge extends Edge {
   constructor(vertexStart, vertexEnd) {
-    super(vertexStart, vertexEnd);
-    this.arrowHead = new ArrowHead(vertexStart, vertexEnd);
+    super(vertexStart, vertexEnd)
+  }
+
+  createArrowHead() {
+    const objStart = this.vertexStart;
+    const objEnd = this.vertexEnd;
+    const coords = calculateСoordsEdge(objStart, objEnd);
+    this.arrowHead = new ArrowHead(...coords);
   }
 
   draw(ctx, strokeColor = 'black') {
@@ -159,7 +165,7 @@ class DirectedEdge extends Edge {
   }
 }
 
-class ParallelDirectedEdge extends DirectedEdge {
+class ParallelDirectedEdge extends Edge {
   constructor(objStart, objEnd, dAngle) {
     super(objStart, objEnd);
     this.dAngle = dAngle;
@@ -230,6 +236,7 @@ class DirectedGraph extends Graph {
             const vi = this.vertices.get(elementI);
             const vj = this.vertices.get(elementJ);
             const edge = new ParallelDirectedEdge(vi, vj, dAngle);
+            edge.createArrowHead();
             this.edges.set(`${i + 1} - ${j + 1}`, edge);
           } else {
             const elementI = i + 1;
@@ -237,10 +244,40 @@ class DirectedGraph extends Graph {
             const vi = this.vertices.get(elementI);
             const vj = this.vertices.get(elementJ);
             const edge = new DirectedEdge(vi, vj);
+            edge.createArrowHead();
             this.edges.set(`${i + 1} - ${j + 1}`, edge);
           }
         }
       }
-    }  
+    }
+  }
+}
+
+class NotDirectedGraph extends Graph {
+  constructor(matrix) {
+    super(matrix);
+  }
+
+  createGraphElements() {
+    const matrix = this.matrix;
+    const n = matrix.length;
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j <= i; j++) {
+        if (matrix[i][j] === 1) {
+          if (i === j) {
+            const v = this.vertices.get(i + 1);
+            const loop = new Loop(v);
+            this.loops.set(v.i, loop);
+          } else {
+            const elementI = i + 1;
+            const elementJ = j + 1;
+            const vi = this.vertices.get(elementI);
+            const vj = this.vertices.get(elementJ);
+            const edge = new Edge(vi, vj);
+            this.edges.set(`${i + 1} - ${j + 1}`, edge);
+          }
+        }
+      }
+    }
   }
 }
