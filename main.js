@@ -17,7 +17,7 @@ drawNotDirGraph(notDirGraph, ctxNotDir);
 drawNotDirGraph(notDirGraph, ctxDijkstra);
 
 
-notDirGraph.setWeights = weightsMatrix;
+notDirGraph.setWeights(weightsMatrix);
 notDirGraph.drawAllWeights(ctxWeights);
 notDirGraph.drawAllWeights(ctxWeights2);
 

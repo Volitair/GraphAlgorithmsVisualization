@@ -278,7 +278,7 @@ class NotDirectedGraph extends Graph {
     super(matrix);
   }
 
-  set setWeights(weightsMatrix) {
+  setWeights(weightsMatrix) {
     this.weights = weightsMatrix;
     for (const item of this.edges) {
       const edge = item.pop();
