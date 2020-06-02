@@ -1,0 +1,22 @@
+{
+  "name": "graphalgorithmsvisualization",
+  "version": "1.0.0",
+  "description": "Graph algorithms visualization",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volitair/GraphAlgorithmsVisualization.git"
+  },
+  "author": "Volitair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Volitair/GraphAlgorithmsVisualization/issues"
+  },
+  "homepage": "https://github.com/Volitair/GraphAlgorithmsVisualization#readme",
+  "devDependencies": {
+    "eslint": "^7.1.0"
+  }
+}
