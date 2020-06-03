@@ -68,6 +68,10 @@ const kruskal = new Kruskal(notDirGraph);
 ```js
 const treeKruskal = kruskal.kruskalMST();
 ```
+### Запуск виконання алгоритмів
+Запустити виконання алгоритму можна за допомогою відповідної кнопки.
+Після виконання алгоритму результати виводятся в консолі.
+Щоб відкрити консоль нажміть `Ctrl+Shift+J`.
 
 ### Контакти
 [Telegram](https://t.me/Sinishin_vasil)
