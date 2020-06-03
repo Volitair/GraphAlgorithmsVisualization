@@ -36,13 +36,13 @@ notDirGraph.createVertexObj();
 notDirGraph.createGraphElements();
 ```
 
-Функція `drawDirGraph(graph, context)` застосовується для малювання, вказаного в аргументах цієї функії, екземпляра 
+Функція `drawDirGraph(graph, context)` застосовується для створення зображення, вказаного в аргументах цієї функії, екземпляра 
 орієнтованого графа в заданому контексті:<br/>
 ```js
 drawDirGraph(dirGraph, ctxDir);
 ```
 
-Функція `drawNotDirGraph(graph, context)` застосовується для малювання екземпляра неорієнтованого графа в заданому контексті:<br/>
+Функція `drawNotDirGraph(graph, context)` застосовується для створення зображення екземпляра неорієнтованого графа в заданому контексті:<br/>
 ```js
 drawNotDirGraph(notDirGraph, ctxNotDir);
 drawNotDirGraph(notDirGraph, ctxDijkstra);
@@ -64,7 +64,7 @@ notDirGraph.drawAllWeights(ctxWeights2);
 const kruskal = new Kruskal(notDirGraph);
 ```
 
-Метод `kruskalMST()` екземпляра класу алгоритма Крускала повертає масив ребер графа, які входять до мінімального кістякового дерева графа.<br/>
+Метод `kruskalMST()` екземпляра класу алгоритма Крускала повертає масив ребер графа, які входять до мінімального кістякового дерева графа:<br/>
 ```js
 const treeKruskal = kruskal.kruskalMST();
 ```
