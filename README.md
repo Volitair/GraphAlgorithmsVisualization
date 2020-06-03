@@ -21,7 +21,7 @@ npm install
 
 ### Приклад використання програми
 Створення екземпляра класу орієнтовного графа та ініціалізація об’єктів графа (вершин, ребер) для подальшого використання:
-const dirGraph = new DirectedGraph(matrix);
+const dirGraph = new DirectedGraph(matrix);<br/>
 `
 dirGraph.createVertexObj();
 dirGraph.createGraphElements();
