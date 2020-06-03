@@ -21,18 +21,18 @@ npm install
 
 ### Приклад використання програми
 Створення екземпляра класу орієнтовного графа та ініціалізація об’єктів графа (вершин, ребер) для подальшого використання:
-const dirGraph = new DirectedGraph(matrix);<br/>
+<br/>
 ```js
+const dirGraph = new DirectedGraph(matrix);
 dirGraph.createVertexObj();
-
 dirGraph.createGraphElements();
 ```
 
 Аналогічно, створення екземпляра класу неорієнтовного графа та ініціалізація його складових:
-const notDirGraph = new NotDirectedGraph(symmetrMatrix);<br/>
+<br/>
 ```js
+const notDirGraph = new NotDirectedGraph(symmetrMatrix);
 notDirGraph.createVertexObj();
-
 notDirGraph.createGraphElements();
 ```
 
@@ -45,7 +45,6 @@ drawDirGraph(dirGraph, ctxDir);<br/>
 Функція drawNotDirGraph(graph, context) застосовується для малювання екземпляра неорієнтованого графа в заданому контексті:<br/>
 ```js
 drawNotDirGraph(notDirGraph, ctxNotDir);
-
 drawNotDirGraph(notDirGraph, ctxDijkstra);
 ```
 
@@ -57,7 +56,6 @@ notDirGraph.setWeights(weightsMatrix);
 Метод drawAllWeights(context) екземпляра неорієнтованого графа встановлює вагу кожному ребру цього екземпляра:<br/>
 ```js
 notDirGraph.drawAllWeights(ctxWeights);
-
 notDirGraph.drawAllWeights(ctxWeights2);
 ```
 
