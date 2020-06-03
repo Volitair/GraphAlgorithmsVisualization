@@ -69,4 +69,7 @@ const kruskal = new Kruskal(notDirGraph);
 const treeKruskal = kruskal.kruskalMST();
 ```
 
+### Контакти
+[Telegram](https://t.me/Sinishin_vasil)
+
 MIT © [Volitair](https://github.com/Volitair)
