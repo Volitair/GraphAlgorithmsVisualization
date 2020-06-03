@@ -58,7 +58,7 @@ notDirGraph.drawAllWeights(ctxWeights);
 notDirGraph.drawAllWeights(ctxWeights2);
 ```
 
-Створення екземпляра класу алгоритма Крускала для, вказаного в аргументах конструктора класу, графа:
+Створення екземпляра класу алгоритма Крускала для вказаного графа:
 ```js
 const kruskal = new Kruskal(notDirGraph);
 ```
