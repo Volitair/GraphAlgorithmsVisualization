@@ -36,13 +36,12 @@ notDirGraph.createVertexObj();
 notDirGraph.createGraphElements();
 ```
 
-Функція `drawDirGraph(graph, context)` застосовується для створення зображення, вказаного в аргументах цієї функії, екземпляра 
-орієнтованого графа в заданому контексті:<br/>
+Функція `drawDirGraph(graph, context)` застосовується для створення зображення, вказаного в аргументах цієї функії, екземпляра орієнтованого графа в заданому контексті:<br/>
 ```js
 drawDirGraph(dirGraph, ctxDir);
 ```
 
-Функція `drawNotDirGraph(graph, context)` застосовується для створення зображення екземпляра неорієнтованого графа в заданому контексті:<br/>
+Функція `drawNotDirGraph(graph, context)` застосовується для створення зображення, вказаного в аргументах цієї функії, екземпляра неорієнтованого графа в заданому контексті:<br/>
 ```js
 drawNotDirGraph(notDirGraph, ctxNotDir);
 drawNotDirGraph(notDirGraph, ctxDijkstra);
