@@ -13,9 +13,9 @@
 
 ### Установка
 1. Клонуйте репозиторій:
-git clone https://github.com/Volitair/GraphAlgorithmsVisualization.git
+`git clone https://github.com/Volitair/GraphAlgorithmsVisualization.git`
 2. Використайте менеджер пакунків npm для встановлення залежностей:
-npm install
+`npm install`
 3. В файлі const.js замініть матриці суміжності графа на власні.
 4. Відкрийте файл index.html в будь-якому сучасному браузері.
 
