@@ -23,27 +23,27 @@ npm install
 Створення екземпляра класу орієнтовного графа та ініціалізація об’єктів графа (вершин, ребер) для подальшого використання:
 const dirGraph = new DirectedGraph(matrix);<br/>
 `
-dirGraph.createVertexObj();
-dirGraph.createGraphElements();
+dirGraph.createVertexObj();<br/>
+dirGraph.createGraphElements();<br/>
 `
 
 Аналогічно, створення екземпляра класу неорієнтовного графа та ініціалізація його складових:
-const notDirGraph = new NotDirectedGraph(symmetrMatrix);
+const notDirGraph = new NotDirectedGraph(symmetrMatrix);<br/>
 `
-notDirGraph.createVertexObj();
-notDirGraph.createGraphElements();
+notDirGraph.createVertexObj();<br/>
+notDirGraph.createGraphElements();<br/>
 `
 
 Функція drawDirGraph(graph, context) застосовується для малювання, вказаного в аргументах цієї функії, екземпляра 
-орієнтованого графа в заданому контексті:
+орієнтованого графа в заданому контексті:<br/>
 `
-drawDirGraph(dirGraph, ctxDir);
+drawDirGraph(dirGraph, ctxDir);<br/>
 `
 
-Функція drawNotDirGraph(graph, context) застосовується для малювання екземпляра неорієнтованого графа в заданому контексті:
+Функція drawNotDirGraph(graph, context) застосовується для малювання екземпляра неорієнтованого графа в заданому контексті:<br/>
 `
-drawNotDirGraph(notDirGraph, ctxNotDir);
-drawNotDirGraph(notDirGraph, ctxDijkstra);
+drawNotDirGraph(notDirGraph, ctxNotDir);<br/>
+drawNotDirGraph(notDirGraph, ctxDijkstra);<br/>
 `
 
 Метод setWeights(weightsMatrix) екземпляра неорієнтованого графа встановлює вагу кожному ребру цього екземпляра:
@@ -53,18 +53,18 @@ notDirGraph.setWeights(weightsMatrix);
 
 Метод drawAllWeights(context) екземпляра неорієнтованого графа встановлює 
 `
-notDirGraph.drawAllWeights(ctxWeights);
-notDirGraph.drawAllWeights(ctxWeights2);
+notDirGraph.drawAllWeights(ctxWeights);<br/>
+notDirGraph.drawAllWeights(ctxWeights2);<br/>
 `
 
 Створення екземпляра класу алгоритма Крускала для, вказаного в аргументах конструктора класу, графа:
 `
-const kruskal = new Kruskal(notDirGraph);
+const kruskal = new Kruskal(notDirGraph);<br/>
 `
 
-Метод kruskalMST() екземпляра класу алгоритма Крускала повертає масив ребер які входять до мінімального кістякового дерева графа.
-
-const treeKruskal = kruskal.kruskalMST();
-
+Метод kruskalMST() екземпляра класу алгоритма Крускала повертає масив ребер які входять до мінімального кістякового дерева графа.<br/>
+`
+const treeKruskal = kruskal.kruskalMST();<br/>
+`
 
 MIT © [Volitair](https://github.com/Volitair)
