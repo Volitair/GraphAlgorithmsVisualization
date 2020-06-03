@@ -48,12 +48,12 @@ drawNotDirGraph(notDirGraph, ctxNotDir);
 drawNotDirGraph(notDirGraph, ctxDijkstra);
 ```
 
-Метод `setWeights(weightsMatrix)` екземпляра неорієнтованого графа встановлює вагу кожному ребру цього екземпляра::<br/>
+Метод `setWeights(weightsMatrix)` екземпляра неорієнтованого графа встановлює вагу кожному ребру цього неорієнтованого графа::<br/>
 ```js
 notDirGraph.setWeights(weightsMatrix);
 ```
 
-Метод `drawAllWeights(context)` екземпляра неорієнтованого графа встановлює вагу кожному ребру цього екземпляра:<br/>
+Метод `drawAllWeights(context)` екземпляра неорієнтованого графа зображує вагу кожного ребра цього графа у вказаному контексті:<br/>
 ```js
 notDirGraph.drawAllWeights(ctxWeights);
 notDirGraph.drawAllWeights(ctxWeights2);
