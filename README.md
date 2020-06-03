@@ -23,15 +23,17 @@ npm install
 Створення екземпляра класу орієнтовного графа та ініціалізація об’єктів графа (вершин, ребер) для подальшого використання:
 const dirGraph = new DirectedGraph(matrix);<br/>
 `
-dirGraph.createVertexObj();<br/>
-dirGraph.createGraphElements();<br/>
+dirGraph.createVertexObj();
+
+dirGraph.createGraphElements();
 `
 
 Аналогічно, створення екземпляра класу неорієнтовного графа та ініціалізація його складових:
 const notDirGraph = new NotDirectedGraph(symmetrMatrix);<br/>
 `
-notDirGraph.createVertexObj();<br/>
-notDirGraph.createGraphElements();<br/>
+notDirGraph.createVertexObj();
+
+notDirGraph.createGraphElements();
 `
 
 Функція drawDirGraph(graph, context) застосовується для малювання, вказаного в аргументах цієї функії, екземпляра 
@@ -42,8 +44,9 @@ drawDirGraph(dirGraph, ctxDir);<br/>
 
 Функція drawNotDirGraph(graph, context) застосовується для малювання екземпляра неорієнтованого графа в заданому контексті:<br/>
 `
-drawNotDirGraph(notDirGraph, ctxNotDir);<br/>
-drawNotDirGraph(notDirGraph, ctxDijkstra);<br/>
+drawNotDirGraph(notDirGraph, ctxNotDir);
+
+drawNotDirGraph(notDirGraph, ctxDijkstra);
 `
 
 Метод setWeights(weightsMatrix) екземпляра неорієнтованого графа встановлює вагу кожному ребру цього екземпляра:
@@ -53,18 +56,19 @@ notDirGraph.setWeights(weightsMatrix);
 
 Метод drawAllWeights(context) екземпляра неорієнтованого графа встановлює 
 `
-notDirGraph.drawAllWeights(ctxWeights);<br/>
-notDirGraph.drawAllWeights(ctxWeights2);<br/>
+notDirGraph.drawAllWeights(ctxWeights);
+
+notDirGraph.drawAllWeights(ctxWeights2);
 `
 
 Створення екземпляра класу алгоритма Крускала для, вказаного в аргументах конструктора класу, графа:
 `
-const kruskal = new Kruskal(notDirGraph);<br/>
+const kruskal = new Kruskal(notDirGraph);
 `
 
 Метод kruskalMST() екземпляра класу алгоритма Крускала повертає масив ребер які входять до мінімального кістякового дерева графа.<br/>
 `
-const treeKruskal = kruskal.kruskalMST();<br/>
+const treeKruskal = kruskal.kruskalMST();
 `
 
 MIT © [Volitair](https://github.com/Volitair)
