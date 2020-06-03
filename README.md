@@ -72,4 +72,5 @@ const treeKruskal = kruskal.kruskalMST();
 ### Контакти
 [Telegram](https://t.me/Sinishin_vasil)
 
+### License
 MIT © [Volitair](https://github.com/Volitair)
